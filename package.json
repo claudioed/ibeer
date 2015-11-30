@@ -1,0 +1,24 @@
+{
+  "name": "ibeer-places",
+  "version": "1.0.0",
+  "description": "iBeer Places",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "Orders"
+  ],
+  "author": "Claudio E. de Oliveira<claudioed.oliveira@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "interpolate": "^0.1.0",
+    "morgan": "^1.6.1",
+    "q": "^1.4.1",
+    "request": "^2.67.0",
+    "winston": "^1.0.2"
+  }
+}
