@@ -3,6 +3,8 @@ ibeer:
   command: npm start
   ports:
     - 9200:9200
+  links:
+    - "cache:redis"
     
 nginx:
   restart: always
@@ -11,3 +13,6 @@ nginx:
     - "80:80"
   links:
     - ibeer:ibeer
+
+cache:
+  image: redis    
