@@ -3,3 +3,11 @@ ibeer:
   command: npm start
   ports:
     - 9200:9200
+    
+nginx:
+  restart: always
+  build: ./resources/nginx/
+  ports:
+    - "80:80"
+  links:
+    - ibeer:ibeer
