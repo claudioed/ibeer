@@ -1,12 +1,5 @@
-mysql:
-  image: latest
-  environment:
-    - MYSQL_ROOT_PASSWORD=admin
-
-orders:
+ibeer:
   build: .
   command: npm start
   ports:
-    - 4040:4040
-  links:
-    - mysql
+    - 9200:9200
