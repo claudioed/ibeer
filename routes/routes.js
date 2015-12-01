@@ -7,7 +7,6 @@ var apiValidatorService = require('../services/api-key-validator-service');
 module.exports = function (app) {
 
     // All Request handler
-    
     app.use(apiValidatorService.validate);
     
     app.get('/api/places', placesControllers.places);

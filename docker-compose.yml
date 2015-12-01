@@ -6,7 +6,7 @@ ibeer:
   links:
     - redis:redis
     - mongo:mongo
-    
+
 nginx:
   restart: always
   build: ./resources/nginx/
