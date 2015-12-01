@@ -1,10 +1,11 @@
 ibeer:
   build: .
   command: npm start
-  ports:
-    - 9200:9200
+  expose:
+    - 9200
   links:
-    - "cache:redis"
+    - redis:redis
+    - mongo:mongo
     
 nginx:
   restart: always
@@ -14,5 +15,18 @@ nginx:
   links:
     - ibeer:ibeer
 
-cache:
-  image: redis    
+redis:
+  image: redis
+
+mongo:
+  restart: always
+  image : mongo:latest
+  volumes_from:
+    - mongodata
+
+mongodata:
+  image: busybox
+  volumes:
+    - /data/db
+
+

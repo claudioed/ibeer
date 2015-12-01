@@ -4,8 +4,8 @@
 
 'use strict';
 
-var port = process.env.REDIS_PORT || 'localhost';
-var host = process.env.REDIS_HOST || 6379;
+var port = process.env.REDIS_PORT_6379_TCP_PORT || 'localhost';
+var host = process.env.REDIS_PORT_6379_TCP_ADDR || 6379;
 
 var redis = require('redis');
 var client = redis.createClient(port, host);
