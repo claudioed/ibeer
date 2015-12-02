@@ -5,7 +5,7 @@
 'use strict';
 
 var APP_NAME = 'ibeer';
-var LOG_PATH = '/home/claudio/logs/ibeer-app.log';
+var LOG_PATH = '/var/log/ibeer-app.log';
 
 var bunyan = require('bunyan');
 

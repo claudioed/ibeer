@@ -1,26 +1,46 @@
-ibeer:
+ibeer1:
   build: .
   command: npm start
   expose:
-    - 9200
+    - 3001:3001
   links:
     - redis:redis
     - mongo:mongo
+  environment:
+    - PORT=3001
+  volumes:
+    - ~/ibeer/:/opt/
+    - ~/ibeer/ibeer1:/var/log
+    
+ibeer2:
+  build: .
+  command: npm start
+  expose:
+    - 3002:3002
+  links:
+    - redis:redis
+    - mongo:mongo
+  environment:
+    - PORT=3002
+  volumes:
+    - ~/ibeer/:/opt/
+    - ~/ibeer/ibeer2:/var/log
 
 nginx:
   restart: always
   build: ./resources/nginx/
-  ports:
-    - "80:80"
   links:
-    - ibeer:ibeer
+    - ibeer2:ibeer2
+    - ibeer1:ibeer1
+  ports:
+    - 80:80
 
 redis:
   image: redis
 
 mongo:
   restart: always
-  image : mongo:latest
+  image : mongo
   volumes_from:
     - mongodata
 
@@ -28,5 +48,3 @@ mongodata:
   image: busybox
   volumes:
     - /data/db
-
-

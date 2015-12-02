@@ -1,4 +1,4 @@
-FROM node:4.2.1
+FROM node
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev
 
 # Set workdir
