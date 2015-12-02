@@ -11,8 +11,6 @@ var env = require('node-env-file');
 // Load env file
 env('/opt/ibeer.env');
 
-console.log('GAPI'+ process.env.GPLACES_KEY);
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.disable('x-powered-by');

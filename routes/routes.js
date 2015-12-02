@@ -1,19 +1,18 @@
 'use strict';
 
-var placesControllers = require("../controllers/places-controller");
 var beerControllers = require("../controllers/beer-controller");
+var beerPriceControllers = require("../controllers/beer-price-controller");
 var apiValidatorService = require('../services/api-key-validator-service');
 
 module.exports = function (app) {
 
-    // All Request handler
-    app.use(apiValidatorService.validate);
-    
-    app.get('/api/places', placesControllers.places);
+    app.get('/api/places', apiValidatorService.validate, beerPriceControllers.pricesByLocation);
 
-    app.get('/api/beers', beerControllers.allBeerBrands);
+    app.get('/api/beers', apiValidatorService.validate, beerControllers.allBeerBrands);
 
-    // Error Handlers (SSO improvement)
+    app.post('/api/beers', apiValidatorService.validateManager, beerControllers.addBeer);
+
+    // Error Handlers
     if (app.get('env') === 'development') {
         app.use(errorHandlerDev);
     } else {
