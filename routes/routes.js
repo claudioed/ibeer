@@ -3,8 +3,12 @@
 var beerControllers = require("../controllers/beer-controller");
 var beerPriceControllers = require("../controllers/beer-price-controller");
 var apiValidatorService = require('../services/api-key-validator-service');
+var tokenHttpMutator = require('../controllers/token-http-mutator');
+
 
 module.exports = function (app) {
+
+    app.use(tokenHttpMutator.putUserInHeader);
 
     app.get('/api/places', apiValidatorService.validate, beerPriceControllers.pricesByLocation);
 

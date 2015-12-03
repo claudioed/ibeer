@@ -40,7 +40,6 @@ exports.findById = function(beerId){
     return deferred.promise;
 };
 
-
 exports.addBeer = function (beer) {
     var deferred = Q.defer();
     var beers = mongo.collection('beers');
